@@ -9,8 +9,8 @@ public class YardsFeetInches {
     int numInches  = scnr.nextInt();
     int numYards = numInches / 36;
     numInches = numInches -(numYards * 36);
-    int numFeet = numInches / 24;
-    numInches = numInches - (numFeet * 24 );
+    int numFeet = numInches / 12;
+    numInches = numInches - (numFeet * 12 );
 
     System.out.print(numYards + " yards, " + numFeet + " feet, and " + numInches + " inches");
 
