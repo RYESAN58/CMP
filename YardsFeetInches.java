@@ -5,6 +5,7 @@ public class YardsFeetInches {
     Scanner scnr = new Scanner(System.in);
     System.out.println("Enter number of inches:");
 
+
     System.out.println("");
     int numInches  = scnr.nextInt();
     int numYards = numInches / 36;
