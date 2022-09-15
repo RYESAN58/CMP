@@ -11,7 +11,7 @@ public class CircleSphere {
     double circleCircumference = Math.PI * 2 * radius;
     double circleArea = (Math.pow(radius, 2.0))* Math.PI;
     double sphereArea = Math.pow(radius , 2.0) * (4 * Math.PI );
-    double sphereVolume = ((4/3) * Math.PI) * (Math.pow(radius, 3.0));
+    double sphereVolume = Math.pow(radius, 3.0) * ((4.0/3.0) * Math.PI);
 
     System.out.println("Circle Circumference = " + circleCircumference);
     System.out.println("Circle Area = " + circleArea);
