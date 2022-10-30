@@ -49,17 +49,37 @@ public class Homework6Methods {
   }
   public static int getProdOfAllPositiveInts(int x){
     int y=1;
-    if (x % 2== 0){
-      for(int i = 1; i <= x; i++){
-        y*=i;
-      }
-    }else{
+    for(int i = x; i>=1; i--){
+      y= y*i;
+    }
+    return y;
+  }
+  public static int getProdOfAllNegativeInts(int x){
+    int y= -1;
+    if(x >= 0){
       return 0;
+    }else{
+      for(int i = x; i>= 0; i++){
+        y = 3;
+      }
+      return y;
+    }
+  };
+  public static char getCharAtIndex(String s, int x){
+    char y = '?';
+    for(int i = 0; i < s.length()-1; i++){
+      if(i == x){
+        y = s.charAt(i);
+        return y;
+      }else{
+        return y;
+      }
     }
     return y;
   }
 
   public static void main(String[] args) {
     System.out.println(getProdOfAllPositiveInts(4));
+    System.out.println(getCharAtIndex("fire", 0));
   }
 }
