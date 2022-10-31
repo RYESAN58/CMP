@@ -67,19 +67,47 @@ public class Homework6Methods {
   };
   public static char getCharAtIndex(String s, int x){
     char y = '?';
-    for(int i = 0; i < s.length()-1; i++){
+    for(int i = 0; i < s.length(); i++){
       if(i == x){
         y = s.charAt(i);
-        return y;
-      }else{
         return y;
       }
     }
     return y;
   }
+  public static int getCountOfCharInString(String s, char c){
+    int x = 0;
+    for(int i =0; i< s.length(); i++){
+      if (s.charAt(i) == c){
+        x+=1;
+      }
+    }
+    return x;
+  }
+  public static String getStringReversed (String s){
+    String newString = "";
+    for(int i = s.length()-1; i >= 0; i--){
+      String n = "" + s.charAt(i);
+      newString = newString + n;
+    }
+    return newString;
+  }
+  public static String getStringTitleCased (String s){
+    s = s.toLowerCase();
 
+    s = s.substring(0, 0) + Character.toUpperCase(s.charAt(0)) + s.substring(0 + 1);
+
+    for(int i =0; i < s.length()-2; i++){
+      if(s.charAt(i) == ' '){
+        int first = i+1;
+        // char letter = s.charAt(first);
+        s = s.substring(0, first) + Character.toUpperCase(s.charAt(first)) + s.substring(first + 1);
+      }
+    }
+    System.out.println(s);
+    return s;
+  }
   public static void main(String[] args) {
-    System.out.println(getProdOfAllPositiveInts(4));
-    System.out.println(getCharAtIndex("fire", 0));
+    getStringTitleCased("RYAN IS THE GOAT  ");
   }
 }
