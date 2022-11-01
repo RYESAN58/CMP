@@ -97,10 +97,9 @@ public class Homework6Methods {
 
     s = s.substring(0, 0) + Character.toUpperCase(s.charAt(0)) + s.substring(0 + 1);
 
-    for(int i =0; i < s.length()-2; i++){
+    for(int i =0; i < s.length(); i++){
       if(s.charAt(i) == ' '){
         int first = i+1;
-        // char letter = s.charAt(first);
         s = s.substring(0, first) + Character.toUpperCase(s.charAt(first)) + s.substring(first + 1);
       }
     }
