@@ -1,4 +1,3 @@
-
 from unittest import runner
 
 
@@ -30,12 +29,16 @@ class SList:
             runner = runner.next
         runner.next = new_node
         return self
+    def remove_from_front(self):
+        current_head = self.head
+        new_head = current_head.next
+        self.head = new_head
+        return current_head 
 
 my_list = SList()
-print(my_list)
 
 my_list.add_to_front("are").add_to_front("Linked lists").add_to_back("fun!").print_values()
 
-my_list.add_to_front(5)
-my_list.add_to_back(666)
+my_list.remove_from_front()
+print("NEW ONE")
 my_list.print_values()
