@@ -1,3 +1,6 @@
+
+
+from asyncio.windows_events import NULL
 from unittest import runner
 
 
@@ -33,12 +36,36 @@ class SList:
         current_head = self.head
         new_head = current_head.next
         self.head = new_head
-        return current_head 
+        return self 
+    def remove_from_back(self):
+        runner = self.head
+        while(runner.next.next != None):
+            runner = runner.next
+        last_node = runner.next
+        runner.next = None
+        last_node = None
+        return self
+    def remove_val(self, val):
+        runner = self.head
+        while runner.next != None:
+            runner = runner.next
+            if runner.value == val and runner.next == None:
+                self.remove_from_back()
+                return self 
+            elif runner.value == val:
+                current_node = runner
+                new_head = current_node.next
+                current_node = None
+            return self 
+
+
+
 
 my_list = SList()
 
-my_list.add_to_front("are").add_to_front("Linked lists").add_to_back("fun!").print_values()
-
-my_list.remove_from_front()
+my_list.add_to_front("are").add_to_front("Linked lists").add_to_back("fun!")
+my_list.print_values()
+my_list.add_to_back(666)
 print("NEW ONE")
+my_list.remove_val("are")
 my_list.print_values()
