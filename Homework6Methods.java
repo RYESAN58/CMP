@@ -37,7 +37,7 @@ public class Homework6Methods {
     }else if(val3 != x && val3 != y){
       return val3;
     }else{ 
-      return val1;
+      return 5;
     }
     
   }
