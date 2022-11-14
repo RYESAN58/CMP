@@ -37,7 +37,25 @@ public class MidtermProblems {
     }
     return x;
   }
+  public static int sumAll(int a, int b) {
+    
+    if (a > b){
+      int x = 0;
+      for(int i = b; i < a+1; i++){
+        x += i;
+      }
+      return x;
+    }else if(b > a){
+      int x = 0;
+      for(int i = a; i < b+1; i++){
+        x += i;
+      }
+      return x;
+    }else{
+      return a+b;
+    }
+  }
   public static void main(String[] args) {
-    System.out.println(odds(8));
+    System.out.println(sumAll(-5,-5));
     }
 }
