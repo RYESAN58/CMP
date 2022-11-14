@@ -20,7 +20,24 @@ public class MidtermProblems {
       return "EQUAL";
     }
   }
+  public static String odds(int a) {
+    String x = "";
+    if (a%2 == 0){
+      a -=1;
+    }else if(a < 0){
+      return "NONE";
+      }
+    for(int i = 0; i < a+1; i++){
+      if (i % 2 != 0){
+        x = x + i;
+        if (i != a){
+          x = x + ",";
+        }
+      }
+    }
+    return x;
+  }
   public static void main(String[] args) {
-    System.out.println(difference(0, 0));
+    System.out.println(odds(8));
     }
 }
