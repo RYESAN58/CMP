@@ -1,4 +1,4 @@
-package arrays;
+// package arrays;
 import java.util.Scanner;
 
 public class Grades {
@@ -23,7 +23,6 @@ public class Grades {
         count = grades[i];
       }
     }
-    System.out.println("Number Of Grades = " + count);
     return count;
   }
   public static int maxValue(int[] grades, int firstIndex, int secondIndex){
@@ -38,7 +37,6 @@ public class Grades {
         count = grades[i];
       }
     }
-    System.out.println("Number Of Grades = " + count);
     return count;
   }
   public static int minGrade(int[] grades){
@@ -49,8 +47,9 @@ public class Grades {
       }else if (grades[i] < count && grades[i] > 0){
         count = grades[i];
       }
+    }if (count == 1){
+      return 0;
     }
-    System.out.println("Minimum Grade = " + count);
     return count;
   }
   public static int minValue(int[] grades){
@@ -160,7 +159,6 @@ public class Grades {
       }else{
         arr[i] = temp;
       }
-      System.out.println(arr[i]);
     }
   }
   public static void rotateElements(int[] arr, int rotationCount ){
@@ -184,32 +182,30 @@ public class Grades {
     while(index < arr.length-1){
       for(int i=arr.length-1; i > -1; i--){
         x[index] = arr[i];
-        // System.out.println(x[index]);
         index++;
       }
     }
     for(int i=0; i< arr.length;i++){
       arr[i] = x[i];
-      System.out.print(arr[i]);
     }
   }
 
 
-  public static void main(String[] args) {    
-    // while(scnr.hasNextInt()){
-    //   int[] neqArr = new int[10000];
-    //   for(int i =0; i < neqArr.length; i++){
-    //     System.out.println("Enter a grade : ");
-    //     neqArr[i] = scnr.nextInt();
-    //     if (neqArr[i] < 0){
-    //       break;
-    //     }
-    //   }
-    //   System.out.println("");
-    // }
-    int[] x = {45,22,18,89,82,79,15,69,100,55,48,72,16,98,57,75,44,32,21,14,7,16,49,58,72};
-
-    // System.out.print(numberOfBelowAverageElements(x));
-    rotateElements(x,6);
+  public static void main(String[] args) { 
+    Scanner scnr = new Scanner(System.in);
+    while(scnr.hasNextInt()){
+      int[] neqArr = new int[10000];
+      for(int i =0; i < neqArr.length; i++){
+        neqArr[i] = scnr.nextInt();
+        System.out.println("Enter a grade : ");
+        if (neqArr[i] < 0 && i !=0){
+          System.out.println("Number Of Grades = " + readGrades(neqArr));
+          System.out.println("Maximum Grade = "  + maxValue(neqArr));
+          System.out.println("Minimum Grade = "  + minGrade(neqArr));
+          break;
+        }
+      }
+      System.out.println("");
+    }
   }
 }
