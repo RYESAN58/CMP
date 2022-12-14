@@ -94,4 +94,7 @@ public class Animal {
       
     }
   }
+  public void printDetails(){
+    System.out.printf("Name: %20s | Year of Birth: %4d | Weight: %10.2f | Gender: %c\n", name ,birthYear,weight,gender);
+  }
 }
