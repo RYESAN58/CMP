@@ -14,6 +14,7 @@ public class ReceiptMaker {
 	public ReceiptMaker(){
 		MAX_NUM_ITEMS = 10;
 		TAX_RATE = .0875; 
+    MIN_NUM_ITEMS = 10;
 		itemNames = new String[MAX_NUM_ITEMS];
 		itemPrices = new double[MIN_NUM_ITEMS];
 		numItemsPurchased = 0;
@@ -40,7 +41,7 @@ public class ReceiptMaker {
 		System.out.println("Welcome to the "+MAX_NUM_ITEMS+" items or less checkout line");
 	}
 	public void promptUserForProductEntry(){
-		System.out.println("Enter item #"+(numItemsPurchased+1)+ "'s name and price separated by a space, or enter " + SENTINEL + " to end transaction early");
+		System.out.println("Enter item #"+(numItemsPurchased+1)+ "'s name and price separated by a space, or enter \"" + SENTINEL + "\" to end transaction early");
 	}
 	public void addNextPurchaseItemFromUser(String itemName, double itemPrice){
 		itemNames[numItemsPurchased] = itemName;
@@ -55,7 +56,7 @@ public class ReceiptMaker {
 		return subTotal;
 	}
 	public double getMinPrice(){
-		double minPrice =  Integer.MIN_VALUE;	
+		double minPrice =  1000000.00;	
 		for(int i=0; i<numItemsPurchased; i++){
 			if(itemPrices[i]<minPrice){
 				minPrice = itemPrices[i];
@@ -65,8 +66,8 @@ public class ReceiptMaker {
 	}
 	public int getIndexOfMinPrice(){
 		int indexOfMin = 0;
-		for(int i=1; i<numItemsPurchased; i++){
-			if(itemPrices[i]< itemPrices[indexOfMin]){
+		for(int i=1; i < numItemsPurchased; i++){
+			if(itemPrices[i] < itemPrices[indexOfMin]){
 				indexOfMin = i;
 			}
 		}
@@ -85,7 +86,7 @@ public class ReceiptMaker {
 		int indexOfMax = 0;
 		for(int i=1; i<numItemsPurchased; i++){
 			if(itemPrices[i] > itemPrices[indexOfMax]){
-				indexOfMax = numItemsPurchased;
+				indexOfMax = i;
 			}
 		}
 		return indexOfMax;
@@ -112,8 +113,8 @@ public class ReceiptMaker {
 	
 	public void displayReceiptStats(){
 		System.out.println("\n-----------------RECEIPT STATS-----------------");
-		System.out.printf("Min Item Name: %12s | Price: $ %04.2f\n"+ itemNames[getIndexOfMinPrice()], getMinPrice());
-		System.out.printf("Max Item Name: %12s | Price: $ %04.2f\n", itemNames[getIndexOfMaxPrice()], getMaxPrice());
+		System.out.println("Min Item Name: " + itemNames[getIndexOfMinPrice()] + " | Price: $ " + getMinPrice());
+		System.out.println("Max Item Name: " + itemNames[getIndexOfMaxPrice()] + " | Price: $ " + getMaxPrice());
 		System.out.printf("Mean price of %02d items purchased:  $ %04.2f\n\n", numItemsPurchased, getMeanPrice());
 		}
 	public void displayAllItemsWithPrices(){
@@ -135,11 +136,12 @@ public class ReceiptMaker {
 
 		while(numItemsPurchased < MAX_NUM_ITEMS){
 			promptUserForProductEntry();
+      // System.out.print("YERRR");
 			String token1;
-			double token2=-1;
+			double token2 =-1;
 			if(!(token1 = scanner.next()).equalsIgnoreCase(SENTINEL)){
-					token2 = getItemPriceFromUser(scanner);
-					addNextPurchaseItemFromUser(token1, token2);
+        token2 = getItemPriceFromUser(scanner);
+        addNextPurchaseItemFromUser(token1, token2);
 			}
 			else{
 				break;
