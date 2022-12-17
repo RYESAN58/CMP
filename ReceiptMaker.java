@@ -81,11 +81,17 @@ public class ReceiptMaker {
 				minPrice = itemPrices[i];
 			}
 		}
-    if(minPrice == 1000000.0){
+    if(minPrice == 1000000.00){
       return 0.00;
     }
 		return minPrice;
 	}
+  public String extraZero(double x){
+    if(x == 0.0){
+      return "0";
+    }
+    return "";
+  }
 	public int getIndexOfMinPrice(){
 		int indexOfMin = 0;
 		for(int i=1; i < numItemsPurchased; i++){
@@ -117,7 +123,12 @@ public class ReceiptMaker {
 		return indexOfMax;
 	}
 	public double getMeanPrice(){
-			return getSubtotal()/numItemsPurchased;
+      double x = 0.00;
+      x = getSubtotal()/numItemsPurchased;
+      if (!(x > 0)){
+        return 0.00;
+      }
+			return x;
 	}
 
 	public double getTaxOnSubtotal(){
@@ -138,8 +149,8 @@ public class ReceiptMaker {
 	
 	public void displayReceiptStats(){
 		System.out.println("\n-----------------RECEIPT STATS-----------------");
-		System.out.println("Min Item Name: " + spaceCreator(itemNames[getIndexOfMinPrice()]) + itemNames[getIndexOfMinPrice()] + " | Price: $ " + getMinPrice());
-		System.out.println("Max Item Name: " + spaceCreator(itemNames[getIndexOfMaxPrice()]) + itemNames[getIndexOfMaxPrice()] + " | Price: $ " + getMaxPrice());
+		System.out.println("Min Item Name: " + spaceCreator(itemNames[getIndexOfMinPrice()]) + itemNames[getIndexOfMinPrice()] + " | Price: $ " + getMinPrice() + extraZero(getMinPrice()));
+		System.out.println("Max Item Name: " + spaceCreator(itemNames[getIndexOfMaxPrice()]) + itemNames[getIndexOfMaxPrice()] + " | Price: $ " + getMaxPrice() + extraZero(getMaxPrice()));
 		System.out.printf("Mean price of %02d items purchased:  $ %04.2f\n\n", numItemsPurchased, getMeanPrice());
 		}
 	public void displayAllItemsWithPrices(){
