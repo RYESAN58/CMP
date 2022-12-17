@@ -36,6 +36,25 @@ public class ReceiptMaker {
 		itemPrices = new double[MAX_NUM_ITEMS];
 		numItemsPurchased = 0;
 	}
+  public String spaceCreator(String s){
+    int x = 0;
+    String newStr = "";
+    if (s != null){
+      for(int i =0; i < s.length(); i++){
+        x += 1;
+      }
+      x = 12 - x;
+      for(int i = 0; i < x; i++){
+        newStr = newStr + " ";
+      }
+      return newStr;
+    // }else{
+    //   for(int i = 0; i < 8; i++){
+    //     newStr = newStr + " ";
+    //   }
+    }
+    return "        ";
+  }
 	
 	public void greetUser(){
 		System.out.println("Welcome to the "+MAX_NUM_ITEMS+" items or less checkout line");
@@ -62,6 +81,9 @@ public class ReceiptMaker {
 				minPrice = itemPrices[i];
 			}
 		}
+    if(minPrice == 1000000.0){
+      return 0.00;
+    }
 		return minPrice;
 	}
 	public int getIndexOfMinPrice(){
@@ -80,6 +102,9 @@ public class ReceiptMaker {
 				maxPrice = itemPrices[i];
 			}
 		}
+    if ( maxPrice == -2147483648){
+      return 0.00;
+    }
 		return maxPrice;
 	}
 	public int getIndexOfMaxPrice(){
@@ -113,14 +138,14 @@ public class ReceiptMaker {
 	
 	public void displayReceiptStats(){
 		System.out.println("\n-----------------RECEIPT STATS-----------------");
-		System.out.println("Min Item Name: " + itemNames[getIndexOfMinPrice()] + " | Price: $ " + getMinPrice());
-		System.out.println("Max Item Name: " + itemNames[getIndexOfMaxPrice()] + " | Price: $ " + getMaxPrice());
+		System.out.println("Min Item Name: " + spaceCreator(itemNames[getIndexOfMinPrice()]) + itemNames[getIndexOfMinPrice()] + " | Price: $ " + getMinPrice());
+		System.out.println("Max Item Name: " + spaceCreator(itemNames[getIndexOfMaxPrice()]) + itemNames[getIndexOfMaxPrice()] + " | Price: $ " + getMaxPrice());
 		System.out.printf("Mean price of %02d items purchased:  $ %04.2f\n\n", numItemsPurchased, getMeanPrice());
 		}
 	public void displayAllItemsWithPrices(){
 		System.out.println("\n---------------RECEIPT BREAKDOWN---------------");
 		for(int i=0; i<numItemsPurchased; i++){
-			System.out.printf("Item #%02d   Name: %3s | Price: $ %04.2f\n",(i+1), itemNames[i], itemPrices[i]);
+			System.out.printf("Item #%02d   Name: %12s | Price: $ %04.2f\n",(i+1), itemNames[i], itemPrices[i]);
 		}
 	}
 	private double getItemPriceFromUser(Scanner scanner){
