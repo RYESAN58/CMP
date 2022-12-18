@@ -37,21 +37,14 @@ public class ReceiptMaker {
 		numItemsPurchased = 0;
 	}
   public String spaceCreator(String s){
-    int x = 0;
+    int x;
     String newStr = "";
     if (s != null){
-      for(int i =0; i < s.length(); i++){
-        x += 1;
-      }
-      x = 12 - x;
+      x = 12 - s.length();
       for(int i = 0; i < x; i++){
         newStr = newStr + " ";
       }
       return newStr;
-    // }else{
-    //   for(int i = 0; i < 8; i++){
-    //     newStr = newStr + " ";
-    //   }
     }
     return "        ";
   }
