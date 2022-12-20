@@ -1,4 +1,7 @@
+import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Random;
+
 
 public class Movie {
   private String movieName;
@@ -139,7 +142,17 @@ public class Movie {
   public String toString(){
     return "Movie: [ Minutes " + placeZero(getNumMinutes()) +" | Movie Name: " + spaceCreator() + getMovieName() +" | " + isIt() + " | " + "Number of Cast Members: " + getNumCastMembers() + " | " + "Cast Members: " + getCastMemberNamesAsString() +" ]";
   }
+  public boolean equals(Object o){
+    ((Movie) o).getMovieName();
+    return true;
+  }
   public static void main(String[] args) {
-    
+
+
+    char[] emotion = {'n','o','t',' ','s','a','d'};
+    System.out.print(emotion.length);
+
   }
 }
+
+
