@@ -15,11 +15,9 @@ public class ProjectEliza {
   public static int getRandomNumber(int min, int max) {
     return (int) ((Math.random() * (max - min)) + min);
   }
-	public ProjectEliza(){
 		//questions = new String[   ]; //initialize your array to the correct length to match your number of questions you populate it with
 		//statements = //initialize your array to the correct length to match your number of questions you populate it with
 		
-	}
 
 	public static void populateStatementsArray(String first, String second){
     String[] questions;

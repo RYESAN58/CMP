@@ -1,8 +1,7 @@
-package arrays; 
+
 import java.util.Scanner;
 
-public class Grades {
-
+public class Array {
   public static int readGrades(int[] grades){
     int count = 0;
     for(int i =0; i < grades.length; i++){
@@ -107,12 +106,39 @@ public class Grades {
     x = dsum/dcount;
     return x;
   }
+  public static double average(int[] arr, int first, int second){
+    double count = 0.0;
+    double sum = 0.0;
+    if((first < 0 || second < 0) || (first > arr.length-1 || second > arr.length-1)){
+      return -666.0;
+    }
+    for(int i = first; i < second+1; i++){
+      sum += arr[i];
+      count += 1.0;
+    }
+    return sum / count; 
+  }
   public static int indexOfFirstMaxValue(int[] arr){
     int x = maxValue(arr);
     for (int i = 0; i < arr.length; i++){
       if(arr[i] == x){
         return i;
       }
+    }
+    return x;
+  }
+  public static int indexOfFirstMaxValue(int[] arr, int first, int second){
+    int[] arr2;
+    if((first < 0 || second < 0) || (first > arr.length-1 || second >= arr.length-1)){
+      return -1;
+    }
+    arr2 = new int[second - first];
+    for (int i = first; i < second+1; i++){
+      arr2[i-first] = arr[i];
+      }
+    int x = maxValue(arr2);
+    if((first < 0 || second < 0) || (first > arr2.length-1 || second >= arr2.length-1)){
+      return -1;
     }
     return x;
   }
@@ -189,8 +215,6 @@ public class Grades {
       arr[i] = x[i];
     }
   }
-
-
   public static void main(String[] args) { 
     Scanner scnr = new Scanner(System.in);
     while(scnr.hasNextInt()){
