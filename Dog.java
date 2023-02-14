@@ -9,10 +9,11 @@ public class Dog {
     this.weight = 0;
     this.height = 0;
     this.isVaccinated = true;
-    this.isVaccinated = false;
+    this.ageInDogYears = 7;
 
   }
   public Dog(String name, double weight, double height, boolean isVaccinated, int ageInDogYears){
+    this();
     this.name = name;
     this.weight = weight;
     this.height = height;
@@ -47,8 +48,39 @@ public class Dog {
     return this.ageInDogYears;
   }
   public void setAgeInDogYears(int ageInDogYears){
-    this.ageInDogYears = ageInDogYears; 
+    this.ageInDogYears = ageInDogYears;
   }
   
-  
+  @Override
+  public String toString(){
+    String s = "dog Name: " + this.name + " dog Weight: " + this.weight + " dog height: " + this.height;
+    if(isVaccinated){
+      s += " Dog is Vaxxed" + " Dog is " + ageInDogYears + " Years old in dog years.";
+    }else{
+      s += " Dog isn't Vaxxed " + "Dog is " + ageInDogYears + " Years old in dog years.";
+    }
+    return s;
+  }
+  @Override
+  public boolean equals(Object obj){
+    if(obj == null){return false;}
+    if(this == obj){return true;}
+    if(obj instanceof Dog){
+      Dog other = (Dog) obj;
+      if (ageInDogYears == other.ageInDogYears){
+        if(Math.abs(height-other.height) <0.5){
+          if(Math.abs(weight - other.weight)< 0.5){
+            if(isVaccinated == other.isVaccinated){
+              if((name !=null) && (other.name!= null)){
+                if(name.equals(other.name)){
+                  return true;
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+    return false;
+  }
 }
