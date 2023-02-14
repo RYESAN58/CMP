@@ -165,6 +165,33 @@ public class Array {
     return count;
   }
 
+  public static int[] indexArray(int []arr, int first, int second){
+    int[] arr2;
+    if((first < 0 || second < 0) || (first > arr.length-1 || second >= arr.length-1)){
+      return null;
+    }
+    arr2 = new int[second - first];
+    for (int i = first; i < second+1; i++){
+      arr2[i-first] = arr[i];
+      }
+
+    return arr2;
+  }
+  public static int numberOfBelowAverageElements(int[] arr, int first, int last){
+    int[] y = indexArray(arr, first, last);
+    if (y == null){return -666;};
+    double x = average(y);
+    int count =0;
+    for(int i =0; i < y.length; i++){
+      if(y[i] < x){
+        count +=1;
+      }
+    }
+    // int value = (int) count;
+    return count;
+  }
+
+
   public static int numberOfAboveAverageElements(int[] arr){
     double x = average(arr);
     int count =0;
@@ -216,20 +243,6 @@ public class Array {
     }
   }
   public static void main(String[] args) { 
-    Scanner scnr = new Scanner(System.in);
-    while(scnr.hasNextInt()){
-      int[] neqArr = new int[10000];
-      for(int i =0; i < neqArr.length; i++){
-        neqArr[i] = scnr.nextInt();
-        System.out.println("Enter a grade : ");
-        if (neqArr[i] < 0 && i !=0){
-          System.out.println("Number Of Grades = " + readGrades(neqArr));
-          System.out.println("Maximum Grade = "  + maxValue(neqArr));
-          System.out.println("Minimum Grade = "  + minGrade(neqArr));
-          break;
-        }
-      }
-      System.out.println("");
-    }
+    
   }
 }
