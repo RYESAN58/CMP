@@ -14,7 +14,6 @@ public class YardsFeetInches {
     numInches = numInches - (numFeet * 12 );
 
     System.out.print(numYards + " yards, " + numFeet + " feet, and " + numInches + " inches");
-
-    // 10 yards, 0 feet, and 7 inches.
+    
   }
 }
