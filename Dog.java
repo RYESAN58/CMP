@@ -20,6 +20,10 @@ public class Dog {
     this.isVaccinated = isVaccinated;
     this.ageInDogYears = ageInDogYears;
   }
+  public Dog(String name){
+    this();
+    this.name = name;
+  }
   public String getName(){
     return this.name;
   }
