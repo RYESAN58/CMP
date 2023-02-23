@@ -25,10 +25,10 @@ public class Airplane {
     this();
     if(numPass < 0){
       this.passengers = new Passenger[0];
-      this.numPassengers = numPass;
+      this.numPassengers = 0;
     }else{
       this.passengers = new Passenger[numPass];
-      this.numPassengers = numPass;
+      this.numPassengers = 0;
     };
     this.airplaneName = airplaneName;
   }
@@ -71,5 +71,10 @@ public class Airplane {
     this.passengers[index] = null;
     this.numPassengers -=1;
     return temp;
+  }
+  public void removeAllPassengers(){
+    for(int i = 0 ; i < numPassengers-1; i++){
+      passengers[i] = null;
+    }
   }
 }
