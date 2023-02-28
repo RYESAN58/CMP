@@ -22,6 +22,10 @@ public class BetterShowDog extends ShowDog{
     numTircks = 0;
     tricks = new Trick[MAX_TRICKS];
   }
+  @Override
+  public String toString(){
+    return super.toString() + "I am a super better DOg";
+  }
   public boolean addTrick(String trickName, int skillLevel){
     if(numTircks < MAX_TRICKS){
       if(trickName != null && skillLevel > 0){
@@ -36,6 +40,10 @@ public class BetterShowDog extends ShowDog{
     }
     return false;
   }
+  public int getNumTricks(){
+    return numTircks;
+  }
+
   private class Trick {
     private int skillLevel;
     private String name;
