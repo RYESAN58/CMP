@@ -1,38 +1,51 @@
-public class Person {
-  
-    private String name;
-    private double weight;
-    private double height;
-    private int age;
-    private Dog [] doggies;
-    private int numDogs;
+public class Person extends Passenger {
 
-    public Person(){
-      name = "Doe";
-      weight = 0;
-      height = 0;
-      age = 0;
-      doggies = new Dog[5];
-      numDogs = 0;
-    }
-    public Person(String name, double weight, double height, int age, Dog [] dogs){
-      this();
-      this.name = name;
-      this.weight = weight;
-      this.height = height;
-      this.age = age;
-      copyIncomingArrayIntoMemberDoggiesArray(dogs);
-    }
+  private int numOffspring;
 
-    private void copyIncomingArrayIntoMemberDoggiesArray(Dog[] dogs){
-      int len = 0;
-      if(doggies.length > dogs.length){
-        len = dogs.length;
-      }else{
-        len = doggies.length;
-      }for(int i = 0; i < len; i++){
-        doggies[i] = dogs[i];
-        numDogs ++;
+  public Person() {
+      super();
+      numOffspring = 0;
+  }
+
+  public Person(int numOffspring) {
+      super();
+      setNumOffspring(numOffspring);
+  }
+
+  public Person(String name, int birthYear, double weight, double height, char gender, int numCarryOn, int numOffspring) {
+      super(name, birthYear, weight, height, gender, numCarryOn);
+      setNumOffspring(numOffspring);
+  }
+
+  public void setNumOffspring(int numOffspring) {
+      if (numOffspring < 0) {
+          this.numOffspring = 0;
+      } else {
+          this.numOffspring = numOffspring;
       }
-    }
+  }
+
+  public int getNumOffspring() {
+      return numOffspring;
+  }
+
+  @Override
+  public void printDetails() {
+      super.printDetails();
+      System.out.printf("Person: Number of Offspring: %4d\n", numOffspring);
+  }
+
+  @Override
+  public String toString() {
+      return super.toString() + String.format("Person: Number of Offspring: %4d\n", numOffspring);
+  }
+
+  @Override
+  public boolean equals(Object obj) {
+      if (obj instanceof Person) {
+          Person other = (Person) obj;
+          return super.equals(other) && this.numOffspring == other.numOffspring;
+      }
+      return false;
+  }
 }

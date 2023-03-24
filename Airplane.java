@@ -84,7 +84,7 @@ public class Airplane {
               this.airplaneName, this.numPassengers, this.passengers.length);
       for (int i = 0; i < this.numPassengers; i++) {
           Passenger passenger = this.passengers[i];
-          System.out.printf("Name: %20s | Year of Birth: %4d | Weight: %10.2f | Gender: %c\n",
+          System.out.printf("Name: %20s | Year of Birth: %4d | Weight: %10.2f | Gender: %c | NumCarryOn:  " + passenger.getNumCarryOn() +"\n",
                   passenger.getName(), passenger.getBirthYear(), passenger.getWeight(), passenger.getGender());
       }
   }
@@ -110,10 +110,12 @@ public class Airplane {
   }
 
   public double getTotalWeightOfAllPassengers() {
-    double totalWeight = 0;
+    double totalWeight = 0.0;
     for (int i = 0; i < numPassengers; i++) {
-        totalWeight += passengers[i].getWeight();
+        System.out.println(passengers[i].getWeight());
+        totalWeight = totalWeight + passengers[i].getWeight();
     }
+    System.out.println("THIS IS THE TOTAL " + totalWeight);
     return totalWeight;
 }
 
@@ -145,15 +147,22 @@ public int getNumberOfPassengersBelowWeight(double weight) {
     return count;
 }
 
-public void increaseWeightOfAllPassengers() {
+  public void increaseWeightOfAllPassengers() {
+      for (int i = 0; i < numPassengers; i++) {
+          passengers[i].gainWeight();
+      }
+  }
+
+  public void increaseWeightOfAllPassengers(double weight) {
     for (int i = 0; i < numPassengers; i++) {
-        passengers[i].gainWeight();
+        passengers[i].gainWeight(weight);
     }
 }
 
-public void gainWeightOfAllPassengers(double amount) {
-    for (int i = 0; i < numPassengers; i++) {
-        passengers[i].gainWeight(amount);
-    }
-}
+  public void gainWeightOfAllPassengers(double amount) {
+      for (int i = 0; i < numPassengers; i++) {
+          System.out.println(passengers[i].getWeight());
+          passengers[i].gainWeight();
+      }
+  }
 }

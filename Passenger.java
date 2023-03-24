@@ -4,7 +4,7 @@ public class Passenger {
   private double weight;
   private char gender;
   private int numCarryOn;
-
+  private double height;
 
   public Passenger(){
     this.name = "";
@@ -21,6 +21,14 @@ public class Passenger {
     setGender(gender);
     setnumCarryOn(numCarryOn);
   }
+  public Passenger(String name, int birthYear, double weight, double height, char gender, int numCarryOn) {
+    this.name = name;
+    this.birthYear = birthYear;
+    setHeight(height);
+    setWeight(weight);
+    setGender(gender);
+    setnumCarryOn(numCarryOn);
+  }
   public int calculateAge(int year) {
     if (year < this.birthYear){
       return -1;
@@ -30,6 +38,25 @@ public class Passenger {
   }
   public void gainWeight(){
     this.weight += 1;
+  }
+  public double getHeight() {
+    return height;
+  }
+  public void setHeight(double height) {
+    if (height < 0) {
+        this.height = -1;
+    } else {
+        this.height = height;
+    }
+  }
+  
+  public double calculateBMI() {
+    if (height < 0) {
+        return -1;
+    } else {
+        double bmi = (weight * 703) / (height * height);
+        return bmi;
+    }
   }
   public void gainWeight(double x){
     if(x < 0){
@@ -54,6 +81,7 @@ public class Passenger {
     return this.numCarryOn;
 
   }
+  
   public boolean isFemale(){
     if(this.gender == 'f' || this.gender == 'F'){
       return true;
@@ -78,9 +106,33 @@ public class Passenger {
       this.weight = 0;
     }
   }
-  public void printDetails(){
-    System.out.printf("Name: %20s | Year of Birth: %4d | Weight: %10.2f | Gender: %c | numCarryOn: %2d\n");
-  }
+  public void printDetails() {
+    System.out.printf("Name: %20s | Year of Birth: %4d | Weight: %10.2f |  Height: %10.2f | Gender: %c | NumCarryOn: %2d\n",
+        name, birthYear, weight, height, gender, numCarryOn);
+}
+
+@Override
+public String toString() {
+    return String.format("Name: %20s | Year of Birth: %4d | Weight: %10.2f | Height: %10.2f | Gender: %c | NumCarryOn: %2d\n",
+            name, birthYear, weight, height, gender, numCarryOn);
+}
+
+@Override
+public boolean equals(Object obj) {
+    if (obj == this) {
+        return true;
+    }
+    if (!(obj instanceof Passenger)) {
+        return false;
+    }
+    Passenger other = (Passenger) obj;
+    return name.equals(other.name) &&
+            birthYear == other.birthYear &&
+            weight == other.weight &&
+            height == other.height &&
+            gender == other.gender &&
+            numCarryOn == other.numCarryOn;
+}
   public void setGender(char Gen){
     if(Gen != 'f' && Gen != 'm'){
       this.gender = 'u';
