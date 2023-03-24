@@ -1,10 +1,15 @@
-public class Passenger {
+public abstract class Passenger implements Eater {
   private String name;
+  private int age;
   private int birthYear;
   private double weight;
   private char gender;
   private int numCarryOn;
   private double height;
+  private int caloriesConsumed;
+  private int caloriesAccumulator;
+
+
 
   public Passenger(){
     this.name = "";
@@ -13,6 +18,15 @@ public class Passenger {
     this.gender = 'u';
     this.numCarryOn = 0;
   }
+  public Passenger(String name, int age, double weight, char gender) {
+    this.name = name;
+    this.age = age;
+    this.weight = weight;
+    this.gender = gender;
+    this.caloriesConsumed = 0;
+    this.caloriesAccumulator = 0;
+  }
+
   public Passenger(String name, int birthYear, double weight, char gender, int numCarryOn){
     this();
     this.name = name;
@@ -49,7 +63,25 @@ public class Passenger {
         this.height = height;
     }
   }
+  public abstract void metabolizeAccumulatedCalories();
+
   
+  public int getCaloriesConsumed() {
+    return caloriesConsumed;
+}
+
+public void setCaloriesConsumed(int caloriesConsumed) {
+    this.caloriesConsumed = caloriesConsumed;
+}
+
+public int getCaloriesAccumulator() {
+    return caloriesAccumulator;
+}
+
+public void setCaloriesAccumulator(int caloriesAccumulator) {
+    this.caloriesAccumulator = caloriesAccumulator;
+}
+
   public double calculateBMI() {
     if (height < 0) {
         return -1;
@@ -81,7 +113,9 @@ public class Passenger {
     return this.numCarryOn;
 
   }
-  
+  public void setAge(int age) {
+    this.age = age;
+}
   public boolean isFemale(){
     if(this.gender == 'f' || this.gender == 'F'){
       return true;

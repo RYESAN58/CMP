@@ -1,4 +1,4 @@
-public class Person extends Passenger {
+public abstract class Person extends Passenger {
 
   private int numOffspring;
 
