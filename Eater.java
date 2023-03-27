@@ -1,5 +1,4 @@
 public interface Eater {
-  void eat(Food food);
-
-  void metabolize();
+  public void metabolize();
+  public void eat(Food food);
 }
