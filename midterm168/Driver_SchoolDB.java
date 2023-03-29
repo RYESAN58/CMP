@@ -1,75 +1,80 @@
-package midterm168;
 
 import java.util.Scanner;
 
 public class Driver_SchoolDB {
-
     public static void main(String[] args) {
-        Scanner input = new Scanner(System.in);
+        Scanner scanner = new Scanner(System.in);
 
-        // Create 3 new Course objects based on input
-        System.out.println("Enter information for three courses:");
+        // create 3 Course objects based on user input
         Course[] courses = new Course[3];
-        for (int i = 0; i < 3; i++) {
-            System.out.print("Course " + (i+1) + " code: ");
-            String code = input.nextLine();
-            System.out.print("Course " + (i+1) + " name: ");
-            String name = input.nextLine();
-            System.out.print("Course " + (i+1) + " credits: ");
-            int credits = input.nextInt();
-            input.nextLine(); // consume newline character
-            // courses[i] = new Course(code, name, credits);
-        }
+        for (int i = 0; i < courses.length; i++) {
+            Boolean isGraduateCourse = scanner.nextBoolean();
+            int courseNum = scanner.nextInt();
+            String courseDept = scanner.nextLine();
+            scanner.nextLine();
+            int numCredits = scanner.nextInt();
+            courses[i] = new Course(isGraduateCourse, courseNum, courseDept, numCredits);
+          }
 
-        // Create 3 new Faculty objects based on input
-        System.out.println("\nEnter information for three faculty members:");
-        Faculty[] faculty = new Faculty[3];
-        for (int i = 0; i < 3; i++) {
-            System.out.print("Faculty " + (i+1) + " name: ");
-            String name = input.nextLine();
-            System.out.print("Faculty " + (i+1) + " birth year: ");
-            int birthYear = input.nextInt();
-            input.nextLine(); // consume newline character
-            System.out.print("Faculty " + (i+1) + " department: ");
-            String department = input.nextLine();
-            System.out.print("Faculty " + (i+1) + " hire year: ");
-            int hireYear = input.nextInt();
-            input.nextLine(); // consume newline character
-            // faculty[i] = new Faculty(name, birthYear, department, hireYear);
-        }
+        // // create 3 Faculty objects based on user input
+        // Faculty[] faculties = new Faculty[3];
+        // for (int i = 0; i < faculties.length; i++) {
+        //     System.out.print("Enter faculty name: ");
+        //     String name = scanner.nextLine();
+        //     System.out.print("Enter faculty birth year: ");
+        //     int birthYear = scanner.nextInt();
+        //     scanner.nextLine(); // consume newline
+        //     System.out.print("Enter faculty department: ");
+        //     String department = scanner.nextLine();
+        //     // faculties[i] = new Faculty(name, birthYear, department);
+        // }
 
-        // Create 3 new GeneralStaff objects based on input
-        System.out.println("\nEnter information for three general staff members:");
-        GeneralStaff[] staff = new GeneralStaff[3];
-        for (int i = 0; i < 3; i++) {
-            System.out.print("General staff " + (i+1) + " name: ");
-            String name = input.nextLine();
-            System.out.print("General staff " + (i+1) + " birth year: ");
-            int birthYear = input.nextInt();
-            input.nextLine(); // consume newline character
-            System.out.print("General staff " + (i+1) + " department: ");
-            String department = input.nextLine();
-            System.out.print("General staff " + (i+1) + " hire year: ");
-            int hireYear = input.nextInt();
-            input.nextLine(); // consume newline character
-            // staff[i] = new GeneralStaff(name, birthYear, department, hireYear);
-        }
+        // // create 3 GeneralStaff objects based on user input
+        // GeneralStaff[] generalStaffs = new GeneralStaff[3];
+        // for (int i = 0; i < generalStaffs.length; i++) {
+        //     System.out.print("Enter general staff name: ");
+        //     String name = scanner.nextLine();
+        //     System.out.print("Enter general staff birth year: ");
+        //     int birthYear = scanner.nextInt();
+        //     scanner.nextLine(); // consume newline
+        //     System.out.print("Enter general staff role: ");
+        //     String role = scanner.nextLine();
+        //     // generalStaffs[i] = new GeneralStaff(name, birthYear, role);
+        // }
 
-        // Create 3 new Student objects based on input
-        System.out.println("\nEnter information for three students:");
-        Student[] students = new Student[3];
-        for (int i = 0; i < 3; i++) {
-            System.out.print("Student " + (i+1) + " name: ");
-            String name = input.nextLine();
-            System.out.print("Student " + (i+1) + " birth year: ");
-            int birthYear = input.nextInt();
-            input.nextLine(); // consume newline character
-            System.out.print("Student " + (i+1) + " major: ");
-            String major = input.nextLine();
-            System.out.print("Is student " + (i+1) + " a graduate student? (true/false): ");
-            boolean isGraduate = input.nextBoolean();
-            input.nextLine(); //
-        }
+        // // create 3 Student objects based on user input
+        // Student[] students = new Student[3];
+        // for (int i = 0; i < students.length; i++) {
+        //     System.out.print("Enter student name: ");
+        //     String name = scanner.nextLine();
+        //     System.out.print("Enter student birth year: ");
+        //     int birthYear = scanner.nextInt();
+        //     scanner.nextLine(); // consume newline
+        //     System.out.print("Enter student major: ");
+        //     String major = scanner.nextLine();
+        //     students[i] = new Student(name, birthYear, major, false);
+        // }
+
+        // // add 2 new Courses to a Faculty object
+        // faculties[0].addCourseTaught(courses[0]);
+        // faculties[0].addCourseTaught(courses[1]);
+
+        // // add 2 new Courses to a Student object
+        // students[0].addCourseTaken(courses[1]);
+        // students[0].addCourseTaken(courses[2]);
+
+        // // add an array of 2 Courses to a Faculty object
+        // Course[] facultyCourses = new Course[] {courses[1], courses[2]};
+        // // faculties[1].set(facultyCourses);
+
+        // // add an array of 2 Courses to a Student object
+        // Course[] studentCourses = new Course[] {courses[0], courses[2]};
+        // // students[1].setCoursesTaken(studentCourses);
+
+        // // get the Course at index (valid and invalid indexes) from a Faculty object
+        // System.out.print("Enter index to get course from faculty (valid index): ");
+        // int validIndex = scanner.nextInt();
+        // scanner.nextLine(); // consume newline
+        // System.out.println("");
       }
     }
-

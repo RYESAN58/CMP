@@ -1,4 +1,3 @@
-package midterm168;
 
 import java.util.Arrays;
 

@@ -1,4 +1,3 @@
-package midterm168;
 
 public class Faculty extends Employee implements Comparable<Person> {
     private Course[] coursesTaught;
@@ -6,6 +5,7 @@ public class Faculty extends Employee implements Comparable<Person> {
     private boolean isTenured;
 
     public Faculty() {
+        this();
         this.coursesTaught = new Course[100];
         this.numCoursesTaught = 0;
         this.isTenured = false;

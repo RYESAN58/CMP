@@ -1,13 +1,13 @@
-package midterm168;
-
-public class GeneralStaff extends Employee {
+public class GeneralStaff extends Employee implements Comparable<Person>  {
   private String duty;
 
   public GeneralStaff() {
-      this.duty = "";
+      super();
+      duty = "";
   }
 
   public GeneralStaff(String duty) {
+      super();
       this.duty = duty;
   }
 
@@ -30,18 +30,17 @@ public class GeneralStaff extends Employee {
       if (!super.equals(obj)) {
           return false;
       }
-      
-      if (!(obj instanceof GeneralStaff)) {
-          return false;
+
+      if (obj instanceof GeneralStaff) {
+          GeneralStaff staff = (GeneralStaff) obj;
+          return duty.equals(staff.getDuty());
       }
-      
-      GeneralStaff staff = (GeneralStaff) obj;
-      return this.duty.equals(staff.getDuty());
+
+      return false;
   }
 
   @Override
   public String toString() {
-      return super.toString() + String.format("GeneralStaff: Duty: %10s", duty);
+      return super.toString() + " GeneralStaff: Duty: " + duty;
   }
 }
-

@@ -1,4 +1,3 @@
-package midterm168;
 
 public class Employee extends Person implements Comparable<Person> {
   private String deptName;
