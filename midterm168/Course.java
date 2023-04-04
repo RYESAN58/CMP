@@ -1,4 +1,3 @@
-package midterm168;
 
 public class Course implements Comparable<Course> {
   private boolean isGraduateCourse;
