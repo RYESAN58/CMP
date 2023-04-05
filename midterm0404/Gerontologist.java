@@ -26,7 +26,11 @@ public class Gerontologist extends Doctor {
   }
 
   public void setVisitFee(double visitFee) {
+    if(visitFee < 0){
+      this.visitFee = 0.0;
+    }else{
       this.visitFee = visitFee;
+    }
   }
 
   @Override

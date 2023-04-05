@@ -2,11 +2,11 @@
 public class PatientException extends Exception {
     
   public PatientException() {
-      super();
+      super("PatientException");
   }
   
   public PatientException(String message) {
-      super(message);
+      super("PatientException"  + message);
   }
   
 }

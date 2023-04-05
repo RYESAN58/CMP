@@ -9,15 +9,4 @@ public interface SeesPatients {
   String getPatientsAsString();
   
   boolean isPatient(Patient patient);
-
-  
-public class PatientException extends Exception {
-  public PatientException(String message) {
-      super(message);
-  }
-  public PatientException() {
-    super();
-}
-
-}
 }

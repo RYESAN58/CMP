@@ -39,40 +39,40 @@ public class Doctor implements SeesPatients, Comparable<Doctor> {
 
     @Override
     public String getPatientsAsString() {
-        StringBuilder sb = new StringBuilder("patients=");
-        for (int i = 0; i < numberOfPatients; i++) {
-            sb.append(patients[i].toString());
-            if (i < numberOfPatients - 1) {
-                sb.append(", ");
-            }
-        }
-        return sb.toString();
-    }
+      if (numberOfPatients == 0) {
+          return "No patients";
+      }
+      StringBuilder sb = new StringBuilder("patients= ");
+      for (int i = 0; i < numberOfPatients; i++) {
+          sb.append(patients[i]);
+          if (i < numberOfPatients - 1) {
+              sb.append(", ");
+          }
+      }
+      return sb.toString();
+  }
 
     @Override
     public boolean isPatient(Patient patient) {
         for (int i = 0; i < numberOfPatients; i++) {
             if (patients[i].equals(patient)) {
                 return true;
+            }else if(patients[0].equals(patient)){
+              return true;
             }
         }
         return false;
     }
 
     @Override
-    public void addPatient(Patient p) throws PatientException {
-      try {
-          for (int i = 0; i < patients.length; i++) {
-              if (patients[i] == null) {
-                  patients[i] = p;
-                  return;
-              }
-          }
-          throw new PatientException("Array capacity has been reached.");
-      } catch (ArrayIndexOutOfBoundsException e) {
-          throw new PatientException("Array capacity has been reached.");
-      }
-  }
+    public void addPatient(Patient patient) throws PatientException {
+      if (numberOfPatients >= MAX_PATIENTS) {
+        throw new PatientException("Array capacity has been reached.");
+    }
+    patients[numberOfPatients] = patient;
+    numberOfPatients++;
+}
+
     @Override
     public String toString() {
         return String.format("Doctor: name=%20s | license number=%06d | %s", name, licenseNumber, getPatientsAsString());
@@ -94,5 +94,6 @@ public class Doctor implements SeesPatients, Comparable<Doctor> {
     public int compareTo(Doctor other) {
         return numberOfPatients - other.getNumberOfPatients();
     }
+
 }
 
