@@ -1,219 +1,161 @@
-import java.util.ArrayList;
-import java.util.Arrays;
 
+public abstract class Vehicle {
+protected Person[][] personsOnBoard;
+protected int numberOfRows;
+protected int maxSeatsPerRow;
+protected int[] numSeatsPerRow;
 
-  public abstract class Vehicle {
-    protected Person[][] personsOnBoard;
-    protected int numberOfRows;
-    protected int maxSeatsPerRow;
-    protected int[] numSeatsPerRow;
-
-
-    // Constructor for all rows having the same number of seats
-    public Vehicle(int numRows, int numSeatsPerRow) {
-        this.numberOfRows = numRows;
-        this.maxSeatsPerRow = numSeatsPerRow;
-        this.numSeatsPerRow = new int[numRows];
-        for (int i = 0; i < numRows; i++) {
-            this.numSeatsPerRow[i] = numSeatsPerRow;
-        }
-        this.personsOnBoard = new Person[numRows][numSeatsPerRow];
-    }
-
-    // Constructor for different seat configurations in each row
-    public Vehicle(int[] numSeatsPerRow) {
-        this.numberOfRows = numSeatsPerRow.length;
-        this.numSeatsPerRow = numSeatsPerRow;
-        this.maxSeatsPerRow = calculateMaxSeatsPerRow();
-        this.personsOnBoard = new Person[numberOfRows][maxSeatsPerRow];
-    }
-
-    // Constructor with driver and different seat configurations
-    public Vehicle(Person driver, int[] numSeatsPerRow) throws InvalidDriverException{
-        this(numSeatsPerRow);
-        setDriver(driver);
-    }
-
-    // Helper method to calculate the maximum number of seats per row
-    private int calculateMaxSeatsPerRow() {
-        int maxSeats = numSeatsPerRow[0];
-        for (int i = 1; i < numSeatsPerRow.length; i++) {
-            if (numSeatsPerRow[i] > maxSeats) {
-                maxSeats = numSeatsPerRow[i];
-            }
-        }
-        return maxSeats;
-    }
-
-  public abstract boolean loadPassenger(Person p);
-
-  public abstract int loadPassengers(Person[] peeps);
-
-
-  public void setDriver(Person p) throws InvalidDriverException {
-      if (!p.hasDriverLicense()) {
-          throw new InvalidDriverException("Invalid driver age: " + p.getAge());
-      }
-      this.personsOnBoard[0][0] = p;
-  }
-  
-
-  public Person getDriver() {
-      return personsOnBoard[0][0];
-  }
-
-  public boolean hasDriver() {
-    if (this.personsOnBoard[0][0] == null){
-      return false;
-    }else{
-      return true;
-    }
-    }
-
-  public int getNumberOfAvailableSeats() {
-      int availableSeats = 0;
-      for (int i = 0; i<this.numberOfRows;i++) {
-          for (int j = 0; j< this.personsOnBoard[i].length;i++) {
-              if (this.personsOnBoard[i][j] == null) {
-                  availableSeats++;
-              }
-          }
-      }
-      return availableSeats;
-  }
-
-  public int getNumberOfAvailableSeatsInRow(int row) {
-      if (row < 0 || row >= this.numberOfRows) {
-          return -1;
-      }
-      int availableSeats = 0;
-      for (int j = 0; j < this.personsOnBoard[row].length; j++) {
-          if (this.personsOnBoard[row][j] == null) {
-              availableSeats++;
-          }
-      }
-
-      return availableSeats;
-  }
-
-  public int getNumberOfPeopleOnBoard() {
-    int numberOfPeople = 0;
-    for (int i = 0; i< this.numberOfRows;i++) {
-        for (int j = 0; j < this.personsOnBoard[i].length; i++) {
-            if (this.personsOnBoard[i][j]!= null) {
-                numberOfPeople++;
-            }
-        }
-    }
-    return numberOfPeople;
+public Vehicle(int numberOfRows, int numSeatsPerRow) {
+this.numberOfRows = numberOfRows;
+this.maxSeatsPerRow = numSeatsPerRow;
+this.numSeatsPerRow = new int[numberOfRows];
+for (int i = 0; i < numberOfRows; i++) {
+this.numSeatsPerRow[i] = numSeatsPerRow;
 }
-
-
+personsOnBoard = new Person[numberOfRows][numSeatsPerRow];
+}
+public Vehicle(int[] numSeatsPerRow) {
+this.numSeatsPerRow = numSeatsPerRow;
+this.numberOfRows = numSeatsPerRow.length;
+maxSeatsPerRow = 0;
+for (int i = 0; i < numberOfRows; i++) {
+if (numSeatsPerRow[i] > maxSeatsPerRow) {
+maxSeatsPerRow = numSeatsPerRow[i];
+}
+}
+this.personsOnBoard = new Person[numberOfRows][maxSeatsPerRow];
+}
+public Vehicle(Person driver, int[] numSeatsPerRow) {
+this.numSeatsPerRow = numSeatsPerRow;
+this.numberOfRows = numSeatsPerRow.length;
+maxSeatsPerRow = 0;
+for (int i = 0; i < numberOfRows; i++) {
+if (numSeatsPerRow[i] > maxSeatsPerRow) {
+maxSeatsPerRow = numSeatsPerRow[i];
+}
+}
+this.personsOnBoard = new Person[numberOfRows][maxSeatsPerRow];
+personsOnBoard[0][0] = driver;
+}
+public abstract boolean loadPassenger(Person p);
+public abstract int loadPassengers(Person[] peeps);
+public void setDriver(Person p) throws InvalidDriverException {
+if (p.hasDriverLicense()) {
+personsOnBoard[0][0] = p;
+}
+else {
+throw new InvalidDriverException();
+}
+}
+public Person getDriver(){
+return personsOnBoard[0][0];
+}
+public boolean hasDriver() {
+if (personsOnBoard[0][0] == null) {
+return false;
+}
+return true;
+}
+public int getNumberOfAvailableSeats() {
+int numSeats = 0;
+for (int i = 0; i < numberOfRows; i++) {
+numSeats += numSeatsPerRow[i];
+}
+numSeats -= getNumberOfPeopleOnBoard();
+return numSeats;
+}
+public int getNumberOfAvailableSeatsInRow(int row) {
+if (row < 0 || row > numberOfRows) {
+return -1;
+}
+int numSeats = numSeatsPerRow[row];
+numSeats -= getNumberOfPeopleInRow(row);
+return numSeats;
+}
+public int getNumberOfPeopleOnBoard() {
+int numPeople = 0;
+for (int i = 0; i < numberOfRows; i++) {
+for (int j = 0; j < maxSeatsPerRow; j++) {
+if (personsOnBoard[i][j] != null) {
+numPeople++;
+}
+}
+}
+return numPeople;
+}
 public int getNumberOfPeopleInRow(int row) {
-  if (row < 0 || row >= this.numberOfRows) {
-    return -1;
-      }
-      int numberOfPeople = 0;
-      for(int j =0; j<this.personsOnBoard[row].length; ++j){
-        if(this.personsOnBoard[row][j]!= null){
-          numberOfPeople ++;
-        }
-      }
-      return numberOfPeople;
-    }
-
+int numPeople = 0;
+for (int i = 0; i < maxSeatsPerRow; i++) {
+if (personsOnBoard[row][i] != null) {
+numPeople++;
+}
+}
+return numPeople;
+}
 public Person getPersonInSeat(int row, int col) {
-  if (row < 0 || row >= this.numberOfRows){
-    return null;
-  }
-  if(col < 0 || col >= this.personsOnBoard[row].length){
-    return null;
-  }
-  return this.personsOnBoard[row][col];
+return personsOnBoard[row][col];
 }
-
 public int[] getLocationOfPersonInVehicle(Person p) {
-  int [] output = new int [2];
-  for (int i = 0; i < this.numberOfRows; i++){
-    for (int j = 0; j < this.personsOnBoard[i].length; i++){
-      if(this.personsOnBoard[i][j].equals(p)){
-        output[0]=i;
-        output[1]=j;
-        return output;
-      }
-    }
-  }
-  output[0] = -1;
-  output[1]=-1;
-  return output;
+int[] location = new int[2];
+location[0] = -1;
+location[1] = -1;
+for (int i = 0; i < numberOfRows; i++) {
+for (int j = 0; j < maxSeatsPerRow; j++) {
+if (personsOnBoard[i][j].equals(p)) {
+location[0] = i;
+location[1] = j;
 }
-
-
-
+}
+}
+return location;
+}
 public Person[] getPeopleInRow(int row) {
-  if(row< 0|| row >= this.numberOfRows){
-    return null;
-  }
-  ArrayList<Person> arr = new ArrayList<>(); // Initialize the ArrayList
-  for (int i = 0; i < this.personsOnBoard[row].length; i++){
-    Person p = this.personsOnBoard[row][i];
-    if (p!= null){
-      arr.add(p);
-    }
-  }
-  if (arr.size() == 0){
-    return null;
-  }
-
-  Person [] output = new Person [arr.size()];
-  for (int i = 0; i<arr.size(); i++){
-    output[i] = arr.get(i);
+if (row < 0 || row >= numberOfRows) {
+return null;
 }
-  return output;
+boolean returnNull = true;
+Person[] peopleInRow = new Person[getNumberOfPeopleInRow(row)];
+for (int i = 0; i < maxSeatsPerRow; i++) {
+if (personsOnBoard[row][i] != null) {
+for (int j = 0; j < numSeatsPerRow[row]; j++) {
+if (peopleInRow[j] == null) {
+peopleInRow[j] = personsOnBoard[row][i].clone();
+break;
 }
-
-
-
+}
+returnNull = false;
+}
+}
+if (returnNull) {
+return null;
+}
+else {
+return peopleInRow;
+}
+}
 public Person[][] getPeopleOnBoard() {
-  Person[][] output = new Person[numberOfRows][];
-  for (int i = 0; i < this.numberOfRows; i++){
-    output[i] = new Person [this.personsOnBoard[i].length];
-    for(int j = 0; j < output[i].length; j++){
-      output[i][j] = this.personsOnBoard[i][j];
-    }
-  }
-  return output;
+Person[][] people = new Person[numberOfRows][maxSeatsPerRow];
+for (int i = 0; i < numberOfRows; i++) {
+for (int j = 0; j < maxSeatsPerRow; j++) {
+people[i][j] = personsOnBoard[i][j];
 }
-
-
-
+}
+return people;
+}
 public boolean isPersonInVehicle(Person p) {
-  for (int i=0; i < this.numberOfRows; i++){
-    for (int j = 0; j < this.personsOnBoard[i].length; j++){
-      if(p.equals(this.personsOnBoard[i][j])== true){
-        return true;
-      }
-    }
-  }
-  return false;
+for (Person[] persons : personsOnBoard) {
+for (Person person : persons) {
+if (person.equals(p)) {
+return true;
 }
-
-
-  public boolean isPersonDriver(Person p) {
-    if(this.personsOnBoard[0][0].equals(p)== true){
-      return true;
-    }
-    return false;
-  }
-
-  private int getMaxSeatsPerRow(int[] numSeatsPerRow) {
-      int maxSeats = 0;
-      for (int numSeats : numSeatsPerRow) {
-          if (numSeats > maxSeats) {
-              maxSeats = numSeats;
-          }
-      }
-      return maxSeats;
-  }
 }
-
+}
+return false;
+}
+public boolean isPersonDriver(Person p) {
+if (personsOnBoard[0][0].equals(p)) {
+return true;
+}
+return false;
+}
+}

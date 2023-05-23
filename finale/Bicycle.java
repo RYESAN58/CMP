@@ -1,76 +1,68 @@
 public class Bicycle extends Vehicle implements Comparable<Bicycle> {
   private double weight;
-
-  public Bicycle() throws InvalidDriverException{
-      super(1, 1);
-      this.weight = 0;
+  public static int[] seats = {1};
+  public final double ACCURACY_RANGE = 0.5;
+  
+  public Bicycle() {
+  super(1, 1);
+  this.weight = 0;
   }
-
-  public Bicycle(Person driver) throws InvalidDriverException {
-      super(driver ,new int[]{1});
-      this.weight = 0;
+  public Bicycle(Person driver)  throws InvalidDriverException{
+  super(driver, seats);
+  this.weight = 0;
   }
-
-  public Bicycle(Person driver, double weight) throws InvalidDriverException {
-      super(driver, new int[]{1});
-      if (weight < 0) {
-          this.weight = 0;
-      } else {
-          this.weight = weight;
-      }
+  public Bicycle(Person driver, double weight)throws InvalidDriverException
+   {
+  super(driver, seats);
+  if (weight >= 0) {
+  this.weight = weight;
   }
-
+  else {
+  this.weight = 0;
+  }
+  }
+  public double getWeight() {
+  return this.weight;
+  }
+  public void setWeight(double weight) {
+  this.weight = weight;
+  }
+  public void setDriver(Person p) throws InvalidDriverException {
+  if (p.getAge() > 3) {
+  personsOnBoard[0][0] = p;
+  }
+  else {
+  throw new InvalidDriverException();
+  }
+  }
   @Override
   public boolean equals(Object o) {
-      if (this == o) {
-          return true;
-      }
-      if (o == null || getClass() != o.getClass()) {
-          return false;
-      }
-      Bicycle bicycle = (Bicycle) o;
-      return Math.abs(this.weight - bicycle.weight) <= 0.5;
+  if (o instanceof Bicycle) {
+  Bicycle a = (Bicycle)o;
+  if (Math.abs(a.weight - this.weight) <= .5) {
+  return true;
   }
-
-
-  public void setDriver(Person p) throws InvalidDriverException {
-          super.setDriver(p);
   }
-
-  public void setWeight(double weight) {
-    if (weight < 0) {
-        this.weight = 0;
-    } else {
-        this.weight = weight;
-    }
-}
-
-  public int compareTo(Bicycle b) {
-      double accuracyRange = 0.5;
-      double weightDifference = this.weight - b.weight;
-      if (weightDifference > accuracyRange) {
-          return 1;
-      } else if (weightDifference < -accuracyRange) {
-          return -1;
-      } else {
-          return 0;
-      }
+  return false;
   }
-
+  @Override
   public String toString() {
-      return "Bicycle [ rider= " + getDriver().getName() + " | weight= " + weight + " ]";
+  return String.format("Bicycle [ rider= " + getDriver().getName() + " | weight= " + weight + " ]");
   }
-
-  public double getWeight() {
-      return weight;
+  public boolean loadPassenger(Person p){
+  return false;
   }
-
-  // Override loadPassenger and loadPassengers methods
-  public boolean loadPassenger(Person p) {
-      return false; // A Bicycle cannot have any passengers
+  public int loadPassengers(Person[] peeps){
+  return 0;
   }
-
-  public int loadPassengers(Person[] peeps) {
-      return 0; // A Bicycle cannot have any passengers
+  public int compareTo(Bicycle b) {
+  if (this.getWeight() - b.getWeight() > ACCURACY_RANGE) {
+  return 1;
   }
-}
+  else if (b.getWeight() - this.getWeight() > ACCURACY_RANGE) {
+  return -1;
+  }
+  return 0;
+  }
+  }
+  
