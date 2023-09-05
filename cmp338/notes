@@ -1,0 +1,17 @@
+stack/adt
+push(push to top)
+pop(pop the top)
+top(shows the top)
+is empty (shows if stack is empty (booleon))
+
+
+
+
+
+stack implimenatation 
+
+array!
+
+A = []
+
+0 -> []
