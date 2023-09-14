@@ -6,6 +6,10 @@ public class Stack {
   private int  top = -1;
   private int[] A = new int [8];
 
+
+  public Stack(int size){
+    A = new int[size];
+  }
   // isEmpty
   public boolean isEmpty() {
     return top == -1;
