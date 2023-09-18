@@ -1,0 +1,40 @@
+.container{
+  display: flex;
+  flex-direction: row;
+}
+#navSide{
+  width: 33%;
+  background-color: lightgreen;
+  height: 100%;
+  text-align: center;
+}
+
+#main-content{
+  text-align: center;
+  width: 77%;
+}
+
+#userPhoto{
+  height: 200px;
+  width: 200px;
+  border-radius: 50%;
+  overflow: hidden;
+}
+.social-icons {
+    list-style: none;
+    padding: 0;
+}
+
+.social-icons li {
+    display: inline-block;
+    margin-right: 10px;
+}
+
+.social-icons a {
+    text-decoration: none;
+    color: #333;
+    font-size: 24px;
+}
+span{
+  font-weight: bold;
+}
