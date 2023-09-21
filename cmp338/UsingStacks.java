@@ -9,6 +9,7 @@ public class UsingStacks {
       case '*': return 2;
       case '/': return 2;
       case '+': return 1;
+      case '^' : return 3;
       case '-' : return 1;
       default : return 0; 
     }
@@ -24,26 +25,48 @@ public class UsingStacks {
       return '-';
     }
 }
+
+
+public static int power(int base, int exp){
+  int product = 1;
+
+  for(int i = 0; i < exp ; i++){
+    product*= base;
+  }
+  return product;
+}
   
 
 
   public static String infix2PostFix(String infix){
-    Stack stack = new Stack(infix.length()/2);
+    stackChar stack = new stackChar(infix.length()/2);
     String postfix = "";
     for(int i = 0; i < infix.length(); i++){
       char op = infix.charAt(i);
       if (isOperator(op)){
-        int prec = prec(op);
-        // 6 = * 1 = / 5 = + - = 3
-        if (prec==2){
-          int b = stack.top();
+        while((!stack.isEmpty()) && prec(stack.top()) >= prec(op) ){
+          postfix+=stack.top();
+          stack.pop();
         }
-        stack.push(0-op);
-      }else{
+        stack.push(op);
+      }else if(op == '('){
+        stack.push(op);
+      }else if(op == ')'){
+        while(stack.top() != '('){
+          postfix+=stack.top();
+          stack.pop();
+        }
+        stack.pop();
+      }
+      else{
         postfix+=op;
       }
     }
-    return "";
+    while(!stack.isEmpty()){
+      postfix+=stack.top();
+      stack.pop();
+    }
+    return postfix;
   }
   public static int postfixEval(String postFix){
     Stack stack = new Stack((postFix.length()/2)+1);
@@ -53,6 +76,7 @@ public class UsingStacks {
       if(isOperator(op)){
         int b = stack.top();   stack.pop();
         int a = stack.top();   stack.pop();
+        if(op == '^')     {stack.push(power(a,b));}
         if(op == '*')     {stack.push(a*b);}
         if(op == '/')     {stack.push(a/b);}
         if(op == '+')     {stack.push(a+b);}
@@ -64,15 +88,16 @@ public class UsingStacks {
     return stack.top();
   }
   public static boolean isOperator(char op){
-    return (op == '*') || (op == '/') || (op == '-') || (op == '+');
+    return (op == '*') || (op == '/') || (op == '-') || (op == '+') || (op == '^');
   }
 
 
   public static void main(String[] args) {
-    String postfix = "53+425*+4-/";
+    String infex="(2+3)*4^2+7/3";
+    String postfix = infix2PostFix(infex);
 
     int result = postfixEval(postfix);
-    System.out.println(result);
+    System.out.println(infex + " = " + postfix + " = " + result);
   }
 }
 
