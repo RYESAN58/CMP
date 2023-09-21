@@ -1,6 +1,50 @@
 package cmp338;
 
 public class UsingStacks {
+
+
+
+  public static int prec(char op){
+    switch(op){
+      case '*': return 2;
+      case '/': return 2;
+      case '+': return 1;
+      case '-' : return 1;
+      default : return 0; 
+    }
+  }
+  public static char check(int x){
+    if(x == 6){
+      return '*';
+    } else if(x == 1){
+      return '/';
+    } else if(x == 5){
+      return '+';
+    } else {
+      return '-';
+    }
+}
+  
+
+
+  public static String infix2PostFix(String infix){
+    Stack stack = new Stack(infix.length()/2);
+    String postfix = "";
+    for(int i = 0; i < infix.length(); i++){
+      char op = infix.charAt(i);
+      if (isOperator(op)){
+        int prec = prec(op);
+        // 6 = * 1 = / 5 = + - = 3
+        if (prec==2){
+          int b = stack.top();
+        }
+        stack.push(0-op);
+      }else{
+        postfix+=op;
+      }
+    }
+    return "";
+  }
   public static int postfixEval(String postFix){
     Stack stack = new Stack((postFix.length()/2)+1);
     for(int i=0; i < postFix.length(); i++){
@@ -31,6 +75,7 @@ public class UsingStacks {
     System.out.println(result);
   }
 }
+
 
 
 
