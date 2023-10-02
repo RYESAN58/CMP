@@ -9,17 +9,9 @@ let turn = "X";
 let win;
 
 
-
-
-
-
 // cahces elements here
 const squares = Array.from(document.querySelectorAll('#board div'));
 const messages = document.querySelector('h2');
-
-
-
-// event listners
 
 
 // fucntions
