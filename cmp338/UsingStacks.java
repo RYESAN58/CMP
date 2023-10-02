@@ -95,7 +95,7 @@ public static int power(int base, int exp){
   public static void main(String[] args) {
     String infex="(2+3)*4^2+7/3";
     String postfix = infix2PostFix(infex);
-
+    
     int result = postfixEval(postfix);
     System.out.println(infex + " = " + postfix + " = " + result);
   }
