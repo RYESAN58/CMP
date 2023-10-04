@@ -69,7 +69,8 @@ public static int power(int base, int exp){
     return postfix;
   }
   public static int postfixEval(String postFix){
-    Stack stack = new Stack((postFix.length()/2)+1);
+    // Stack stack = new Stack((postFix.length()/2)+1);
+    Stackintll stack = new Stackintll();
     for(int i=0; i < postFix.length(); i++){
       char op = postFix.charAt(i);
     

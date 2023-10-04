@@ -17,7 +17,11 @@ public class Stack {
   // push
   public  void push(int x) {
     top++;
+    if(top == A.length){
+      reSize();
+    }
     A[top] = x;
+
   }
   // pop
   public void pop() {
@@ -28,6 +32,12 @@ public class Stack {
   public int top() {
     return A[top];
   }
+  private void reSize(){
+    int[] B = new int [A.length+1];
+    for(int i = 0; i < A.length ; i++)
+      B[i] = A[i];
+    A = B;
+  } 
   
 
   
