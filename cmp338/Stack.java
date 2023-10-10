@@ -33,7 +33,7 @@ public class Stack {
     return A[top];
   }
   private void reSize(){
-    int[] B = new int [A.length+1];
+    int[] B = new int [A.length*2];
     for(int i = 0; i < A.length ; i++)
       B[i] = A[i];
     A = B;
