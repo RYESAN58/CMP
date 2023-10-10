@@ -1,0 +1,48 @@
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  background-color: #f4f4f4;
+}
+
+header, nav, main, footer {
+  margin: 20px;
+  padding: 20px;
+  background-color: #fff;
+  border-radius: 5px;
+}
+
+header {
+  text-align: center;
+}
+
+nav ul {
+  list-style-type: none;
+  padding: 0;
+}
+
+nav ul li {
+  display: inline;
+  margin-right: 10px;
+}
+
+nav ul li a {
+  text-decoration: none;
+  color: #333;
+  padding: 5px 15px;
+  background-color: #ddd;
+  border-radius: 5px;
+}
+
+nav ul li a:hover {
+  background-color: #ccc;
+}
+
+footer {
+  text-align: center;
+}
+
+iframe {
+  margin-top: 20px;
+  display: block;
+}
