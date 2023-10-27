@@ -11,12 +11,11 @@ public class NodeList {
 
   public void insertBefore (int value){
     prev.next = new Node(0, prev.next);
-    curr = prev.next;
   }
 
 
   public void inserAfter (int value){
-    prev = curr;
+    prev = prev.next;
     insertBefore(value) ;
   }
 }
