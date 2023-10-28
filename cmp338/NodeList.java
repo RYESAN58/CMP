@@ -18,4 +18,12 @@ public class NodeList {
     prev = prev.next;
     insertBefore(value) ;
   }
+
+  public void setCurr(Node curr) {
+    
+  }
+  public void insert(int value, int index){
+    setCurrent(index);
+    insertBefore(value);
+  }
 }
