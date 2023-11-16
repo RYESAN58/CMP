@@ -6,12 +6,6 @@ public class Node {
   
   Node next;
 
-
-  
-  public Node(){
-    this.x = x;
-    this.next = next;
-  }
   public Node(int x, Node next){
     this.x = x;
     this.next = next;
