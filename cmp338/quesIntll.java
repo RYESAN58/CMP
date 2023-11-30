@@ -24,5 +24,20 @@ public class quesIntll {
   public boolean isEmpty(){
     return (front ==null); 
   }
+}
 
+getValue{
+
+  total = 0;
+  leftVal = 0;
+  rightVal = 0;
+
+if(left != null){
+  leftval = left.getValue; 
+
+}if (right!= null){
+  rightVal = right.getValue
+}
+
+return value += total;
 }
