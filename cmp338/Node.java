@@ -10,7 +10,5 @@ public class Node {
     this.x = x;
     this.next = next;
   }
-  public static void pop(){
-    
-  }
+  
 }
