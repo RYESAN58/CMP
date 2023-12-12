@@ -4,7 +4,7 @@ public class UsingStacks {
   public static int postfixEval(String x){
     int second;
     int first;
-    Stack stack = new Stack();
+    Stackll stack = new Stackll();
     for(int i =0; i < x.length(); i++){
       if(x.charAt(i) == '*' || x.charAt(i) == '/' || x.charAt(i) == '+' || x.charAt(i) == '-'){
         second = stack.top();
@@ -94,10 +94,10 @@ public class UsingStacks {
     String infix = "2+3*4";
     String infix2 = "3+7/4*2+8*3+1";
 
-    // postfixEval(postfix);
-    // postfixEval(postfix2);
-    // postfixEval(postfix3);
-    // postfixEval(postfix4);
+    postfixEval(postfix);
+    postfixEval(postfix2);
+    postfixEval(postfix3);
+    postfixEval(postfix4);
     infix2PostFix(infix2);
   }
 }
