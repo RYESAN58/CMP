@@ -17,7 +17,7 @@ public class UsingStacks {
         stack.push(x.charAt(i) - '0');
       }
     }
-    System.out.println("answer iss " + stack.top());
+    System.out.println("answer is " + stack.top());
     return stack.top();
   }
 
@@ -37,6 +37,15 @@ public class UsingStacks {
 
   public static void main(String[] args) {
     String postfix = "234*24+8-*+";
+    String postfix2 = "53+425*+4-/";
+
+    String postfix3 = "258-43*+2*+";
+
+    String postfix4 = "234*+";
+
     postfixEval(postfix);
+    postfixEval(postfix2);
+    postfixEval(postfix3);
+    postfixEval(postfix4);
   }
 }
