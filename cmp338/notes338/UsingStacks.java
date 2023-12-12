@@ -24,25 +24,29 @@ public class UsingStacks {
   public static String infix2PostFix(String infix){
     String postFix = "";
     CharStack stack = new CharStack();
-    for(int i = 0; i< infix.length(); i++){
+    for(int i = 0; i < infix.length(); i++){
       char op = infix.charAt(i);
-      if(isOperator(op)){
-        if(stack.isEmpty()){
-          stack.push(op);
-        }else{
-          int cur = prec(op);
-          if(cur == 0){
-            stack.push(op);
-          }else{
-            postFix += op ;
-          }
+      if (isOperator(op)){
+        while((!stack.isEmpty()) && prec(stack.top()) >= prec(op) ){
+          postFix+=stack.top();
+          stack.pop();
         }
-      }else{
+        stack.push(op);
+      }else if(op == '('){
+        stack.push(op);
+      }else if(op == ')'){
+        while(stack.top() != '('){
+          postFix+=stack.top();
+          stack.pop();
+        }
+        stack.pop();
+      }
+      else{
         postFix+=op;
       }
     }
     while(!stack.isEmpty()){
-      postFix+= stack.top();
+      postFix+=stack.top();
       stack.pop();
     }
     System.out.println("Originally " + infix + " now it's " + postFix );
@@ -53,13 +57,17 @@ public class UsingStacks {
   public static boolean isOperator(char op){
     return (op == '*') || (op == '/') || (op == '-') || (op == '+') || (op == '^');
   }
-  public static int prec(char top){
-    if(top == '*' || top == '/'){
-      return 0;
-    }else{
-      return 1;
+  public static int prec(char op){
+    switch(op){
+      case '*': return 2;
+      case '/': return 2;
+      case '+': return 1;
+      case '^' : return 3;
+      case '-' : return 1;
+      default : return 0; 
     }
   }
+
   public static int eval(char operation, int second, int first){
     int outcome;
     if(operation == '*'){
