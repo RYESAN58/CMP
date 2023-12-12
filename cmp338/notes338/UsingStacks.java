@@ -21,6 +21,45 @@ public class UsingStacks {
     return stack.top();
   }
 
+  public static String infix2PostFix(String infix){
+    String postFix = "";
+    CharStack stack = new CharStack();
+    for(int i = 0; i< infix.length(); i++){
+      char op = infix.charAt(i);
+      if(isOperator(op)){
+        if(stack.isEmpty()){
+          stack.push(op);
+        }else{
+          int cur = prec(op);
+          if(cur == 0){
+            stack.push(op);
+          }else{
+            postFix += op ;
+          }
+        }
+      }else{
+        postFix+=op;
+      }
+    }
+    while(!stack.isEmpty()){
+      postFix+= stack.top();
+      stack.pop();
+    }
+    System.out.println("Originally " + infix + " now it's " + postFix );
+    return postFix;
+  }
+
+
+  public static boolean isOperator(char op){
+    return (op == '*') || (op == '/') || (op == '-') || (op == '+') || (op == '^');
+  }
+  public static int prec(char top){
+    if(top == '*' || top == '/'){
+      return 0;
+    }else{
+      return 1;
+    }
+  }
   public static int eval(char operation, int second, int first){
     int outcome;
     if(operation == '*'){
@@ -43,9 +82,14 @@ public class UsingStacks {
 
     String postfix4 = "234*+";
 
-    postfixEval(postfix);
-    postfixEval(postfix2);
-    postfixEval(postfix3);
-    postfixEval(postfix4);
+
+    String infix = "2+3*4";
+    String infix2 = "3+7/4*2+8*3+1";
+
+    // postfixEval(postfix);
+    // postfixEval(postfix2);
+    // postfixEval(postfix3);
+    // postfixEval(postfix4);
+    infix2PostFix(infix2);
   }
 }
