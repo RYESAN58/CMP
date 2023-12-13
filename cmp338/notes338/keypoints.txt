@@ -4,3 +4,5 @@ first question on exam type a
 
 the entire 10;5 class hes talking about array ressizing !!
 
+
+I didn't use a circler array for int que but rather used a regular array 

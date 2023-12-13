@@ -7,7 +7,7 @@ public class Queue {
   public void enqueue(int x){
     if(isEmpty()){
       back = new Node(x, null);
-      front = back.next;
+      front = back;
     }else{
       back.next = new Node(x, null);
       back = back.next;
@@ -24,5 +24,26 @@ public class Queue {
   // isEmpty
   public boolean isEmpty(){
     return (front == null);
+  }
+
+  public void print(){
+    Node curr = front;
+    while(curr != null){
+      System.out.println(curr.x);
+      curr = curr.next;
+    }
+    System.out.println("");
+  }
+
+  public static void main(String[] args) {
+    Queue ry = new Queue();
+
+    ry.enqueue(0);
+    ry.enqueue(6);
+    ry.enqueue(99);
+    System.out.println("current front "+ry.front());
+    ry.dequeue();
+    System.out.println("current front "+ry.front());
+    ry.print();
   }
 }

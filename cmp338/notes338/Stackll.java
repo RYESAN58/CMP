@@ -42,6 +42,7 @@ public class Stackll {
     }
     System.out.println("");
   }
+
   
     public static void main(String[] args) {
       Stackll firstStck = new Stackll();
