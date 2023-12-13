@@ -6,3 +6,23 @@ the entire 10;5 class hes talking about array ressizing !!
 
 
 I didn't use a circler array for int que but rather used a regular array 
+
+
+Lists
+
+               | Array          | Linked List                    | Binary Search Tree
+---------------|----------------|--------------------------------|---------------------------
+Insert         | O(n)           | O(1) if at current             | O(log n) if balanced
+               |                | O(n) otherwise                 | O(n) otherwise
+---------------|----------------|--------------------------------|---------------------------
+Remove         | O(n)           | O(1) if at current             | O(log n) if balanced
+               |                | O(n) otherwise                 | O(n) otherwise
+---------------|----------------|--------------------------------|---------------------------
+Search         | O(n) if unsorted| O(n)                          | O(log n) if balanced
+               | O(log n) otherwise|                             | O(n) otherwise
+---------------|----------------|--------------------------------|---------------------------
+Sort (Balance) | O(n log n)     | O(n log n)                     | O(n log n)
+
+
+10/24 goes over the insertBefore with dummy nodes or not... for list
+10/24 - 10/26 LIST LIST LIST
