@@ -26,3 +26,14 @@ Sort (Balance) | O(n log n)     | O(n log n)                     | O(n log n)
 
 10/24 goes over the insertBefore with dummy nodes or not... for list
 10/24 - 10/26 LIST LIST LIST
+
+A Binary Tree is defined in terms of two Binary Trees,
+
+Def. Binary Search Tree
+
+A Binary Search Tree is:
+
+A Binary Tree where
+The value of every node in the left subtree is less than the value of the root node and
+The value of every node in the right subtree is greater than the value of the root node when
+every subtree is a Binary Search Tree.
