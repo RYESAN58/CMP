@@ -57,7 +57,7 @@ public class List {
     }
     insertBefore(value);
   }
-  
+
   public void print(){
     setCurrent(0);
     Node curr = prev.next;
@@ -85,13 +85,6 @@ public class List {
     sc.insertInOrder(11);
     sc.insertInOrder(12);
     sc.insertInOrder(2);
-    
-    
-    
-    
-    
-    
-    
     sc.print();
   }
 }
