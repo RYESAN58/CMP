@@ -52,3 +52,15 @@ where all subtrees are disjoint Binary Trees.
 
 
 11/9 goes over tracing a tree recursively 
+
+
+11/29 talks about the balancing of a tree and it's importance
+
+Def: A full level is a level with maximum number of nodes possible for that level: 
+
+Def: A full Binary Tree is a Binary Tree where all non-empty levels are full.
+
+Def: A Balanced Binary Tree is a Binary Tree where all non-empty levels are full except perhaps the last non-empty level.
+
+
+11/30 talks about what makes a binary tree logn stuff

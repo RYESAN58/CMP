@@ -26,6 +26,14 @@ public class BstNode {
     if(right != null) right.printInOrder();
   }
 
+  public void InOrder(){
+    if(left != null) left.printInOrder();
+    A[i++] = x;
+    if(right != null) right.printInOrder();
+  }
+
+
+
   public void printReverseOrder(){
     if(right != null) right.printReverseOrder();
     System.out.println(x);
@@ -107,53 +115,5 @@ public class BstNode {
   }
 
 
-  public static void main(String[] args) {
-    BstNode bm = new BstNode(50);
-    bm.insert(8);
-    bm.insert(44);
-    bm.insert(68);
-    bm.insert(4);
-    bm.insert(32);
-    bm.insert(87);
-    bm.insert(53);
-    bm.insert(29);
-    bm.insert(71);
-    bm.insert(1);
-    bm.insert(93);
-    bm.insert(57);
-    bm.insert(25);
-    bm.insert(83);
-    bm.insert(14);
-    bm.insert(46);
-    bm.insert(75);
-    bm.insert(34);
-    bm.insert(60);
-    bm.insert(20);
-    bm.insert(91);
-    bm.insert(49);
-    bm.insert(66);
-    bm.insert(12);
-    bm.insert(37);
-    bm.insert(78);
-    bm.insert(22);
-    bm.insert(55);
-    bm.insert(88);
-    bm.insert(17);
-    bm.insert(42);
-    bm.insert(96);
-    bm.insert(39);
-    bm.insert(63);
-    bm.insert(24);
-    bm.insert(81);
-    bm.insert(47);
-    bm.insert(70);
-    bm.insert(31);
-    bm.insert(54);
-    bm.insert(89);
-    bm.insert(26);
 
-    bm.printInOrder();
-    System.out.println(bm.search(17));
-    System.out.println(bm.count());
-  }
 }
