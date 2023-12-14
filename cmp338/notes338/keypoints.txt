@@ -37,3 +37,18 @@ A Binary Tree where
 The value of every node in the left subtree is less than the value of the root node and
 The value of every node in the right subtree is greater than the value of the root node when
 every subtree is a Binary Search Tree.
+
+
+
+A Binary Tree is either:
+
+1. Empty or
+2. A Root Node only or
+3. A Root Node with Left Subtree or
+4. A Root Node with Right Subtree or
+5. A Root Node with Left & Right subtrees
+
+where all subtrees are disjoint Binary Trees.
+
+
+11/9 goes over tracing a tree recursively 
