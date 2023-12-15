@@ -64,3 +64,15 @@ Def: A Balanced Binary Tree is a Binary Tree where all non-empty levels are full
 
 
 11/30 talks about what makes a binary tree logn stuff
+
+
+Heaps
+
+A Heap is
+1. A Binary Tree
+2. Complete
+3. Where every node has a larger value than those of its children.
+
+
+
+
