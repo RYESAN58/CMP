@@ -45,7 +45,28 @@ public class Stack{
     }
     System.out.println("");
   }  
-  
+
+
+  public static boolean isPalindrome(String str) {
+    Stack stack = new Stack();
+    Queue queue = new Queue();
+
+    for (int i = 0; i < str.length(); i++) {
+        int ch = str.charAt(i);
+        stack.push(ch);
+        queue.enqueue(ch);
+    }
+
+    while (!stack.isEmpty() && !queue.isEmpty()) {
+        if (stack.top() != queue.front()) {
+            return false;
+        }
+        stack.pop();
+        queue.dequeue();
+    }
+
+    return true;
+  }
     public static void main(String[] args) {
       Stack firstStck = new Stack();
       firstStck.push(0);
@@ -62,3 +83,7 @@ public class Stack{
       firstStck.push(66);
     }
   }
+
+
+
+
