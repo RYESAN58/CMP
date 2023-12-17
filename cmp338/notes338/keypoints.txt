@@ -75,4 +75,27 @@ A Heap is
 
 
 
+Weighted Graph
+
+A weighted graph is a graph with weights indicated on the edges of the graph. The weights are numbers that in some sense related to the application indicate the cost you will pay to traverse that edge.
+
+Cost does not necessarily mean money.
+
+Some examples of cost are money, time, distance, etc.
+
+
+
+Depth First Traversal (Search) - DFS
+Breadth First Traversal (Search) - BFS
+
+Both Algorithms Achieve the Same Result.
+
+Both Algorithm determine which vertices in a graph can be reached (visited) from a given starting vertex.
+
+
+
+
+
+
+
 
