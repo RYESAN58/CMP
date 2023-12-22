@@ -23,6 +23,7 @@ public class Heap {
     last ++;
     heapifyUpward(last);
   }
+  
   public void insert(int x){
     last ++;
     if(last == value.length)    resize();
